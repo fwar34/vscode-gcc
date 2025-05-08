@@ -1,0 +1,53 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "CMake Configure",
+      "type": "shell",
+      // cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -GNinja -Bbuild
+      "command": "cmake",
+      "args": [
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE",
+        "-GNinja",
+        "-Bbuild",
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "CMake Build",
+      "type": "shell",
+      // cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -GNinja -Bbuild
+      "command": "cmake",
+      "args": [
+        "--build",
+        "build",
+        "--target",
+        "all"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "dependsOn": ["CMake Configure"]
+    },
+    {
+      "label": "Run",
+      "type": "shell",
+      // cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -GNinja -Bbuild
+      "command": "build/my_program.exe",
+      "args": [
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "dependsOn": ["CMake Build"]
+    }
+  ]
+}
