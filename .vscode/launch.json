@@ -10,7 +10,7 @@
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "environment": [],
-      "externalConsole": true,
+      "externalConsole": true, // 使用外部终端
       "MIMode": "gdb",
       "miDebuggerPath": "gdb.exe",
       "setupCommands": [

@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "CMake Configure",
+      "label": "FCMake Configure",
       "type": "shell",
       // cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -GNinja -Bbuild
       "command": "cmake",
@@ -10,6 +10,7 @@
         "-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE",
         "-GNinja",
         "-Bbuild",
+        "-DCMAKE_BUILD_TYPE=Debug"
       ],
       "group": {
         "kind": "build",
@@ -18,7 +19,7 @@
       "problemMatcher": ["$gcc"]
     },
     {
-      "label": "CMake Build",
+      "label": "FCMake Build",
       "type": "shell",
       // cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -GNinja -Bbuild
       "command": "cmake",
@@ -33,10 +34,10 @@
         "isDefault": true
       },
       "problemMatcher": ["$gcc"],
-      "dependsOn": ["CMake Configure"]
+      "dependsOn": ["FCMake Configure"]
     },
     {
-      "label": "Run",
+      "label": "FCMake Run",
       "type": "shell",
       // cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -GNinja -Bbuild
       "command": "build/my_program.exe",
@@ -47,7 +48,22 @@
         "isDefault": true
       },
       "problemMatcher": ["$gcc"],
-      "dependsOn": ["CMake Build"]
+      "dependsOn": ["FCMake Build"]
+    },
+    {
+      "label": "FCMake Clean",
+      "type": "shell",
+      // cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -GNinja -Bbuild
+      "command": "rm",
+      "args": [
+        "-r",
+        "build"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
     }
   ]
 }
