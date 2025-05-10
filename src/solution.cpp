@@ -28,7 +28,7 @@ void Solution::Process()
         }
     }
 
-    leftSkip_ = unordered_set<int>(stack_.begin(), stack_.end());
+    leftSkip_ = unordered_set<int>(stack_.begin(), stack_.end()); // unordered_set是个匿名变量，为右值，会调用unordered_set的转移赋值函数
 
     for (int i = 0; i < input.size(); i++) {
         if (input[i] == '(') {
